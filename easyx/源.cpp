@@ -17,7 +17,7 @@ typedef void (*fun_callback_t)(int mouseX,int mouseY);
 fun_callback_t g_fun_cd = NULL;
 
 /*
-* pragam:画十字
+* 画十字
 * 输入鼠标位置
 */
 void drawCross(int mouseX,int mouseY)
@@ -32,7 +32,7 @@ void drawCross(int mouseX,int mouseY)
 }
 
 /*
-* pragam:画点
+* 画点
 * 输入鼠标位置
 */
 void drawPoint(int mouseX, int mouseY)
