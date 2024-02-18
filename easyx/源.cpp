@@ -16,6 +16,20 @@ using namespace std;
 typedef void (*fun_callback_t)(int mouseX,int mouseY);
 fun_callback_t g_fun_cd = NULL;
 
+
+/*
+* 画点
+* 输入鼠标位置
+*/
+void drawPoint(int mouseX, int mouseY)
+{
+	//取整
+	int tempX = mouseX / 10;
+	int tempY = mouseY / 10;
+	//填充
+	fillrectangle(tempX * 10, tempY * 10, tempX * 10 + 10, tempY * 10 + 10);
+}
+
 /*
 * 画十字
 * 输入鼠标位置
@@ -31,17 +45,25 @@ void drawCross(int mouseX,int mouseY)
 	fillrectangle(tempX * 10, tempY * 10 - 10, tempX * 10 + 10, tempY * 10);
 }
 
+
 /*
-* 画点
+* 大一号十字
 * 输入鼠标位置
 */
-void drawPoint(int mouseX, int mouseY)
+void drawBCross(int mouseX, int mouseY)
 {
-	//取整
 	int tempX = mouseX / 10;
 	int tempY = mouseY / 10;
-	//填充
-	fillrectangle(tempX * 10, tempY * 10, tempX * 10 + 10, tempY * 10 + 10);
+	drawCross(mouseX,mouseY);
+	fillrectangle(tempX * 10+20, tempY * 10, tempX * 10 + 30, tempY * 10 + 10);
+	fillrectangle(tempX * 10 + 10, tempY * 10 + 10, tempX * 10 + 20, tempY * 10 + 20);
+	fillrectangle(tempX * 10 + 10, tempY * 10 - 10, tempX * 10 + 20, tempY * 10);
+	fillrectangle(tempX * 10 - 10, tempY * 10, tempX * 10 - 20, tempY * 10 + 10);
+	fillrectangle(tempX * 10 - 10, tempY * 10, tempX * 10, tempY * 10 - 10);
+	fillrectangle(tempX * 10 - 10, tempY * 10 + 10, tempX * 10, tempY * 10 + 20);
+	fillrectangle(tempX * 10, tempY * 10 + 20, tempX * 10 + 10, tempY * 10 + 30);
+	fillrectangle(tempX * 10, tempY * 10 - 10, tempX * 10 + 10, tempY * 10 - 20);
+
 }
 
 /*
@@ -73,7 +95,7 @@ int main()
 {
 	//选择函数列表中的函数
 	static int status = 1;
-	fun_callback_t funList[] = {drawPoint,drawCross};
+	fun_callback_t funList[] = {drawPoint,drawCross,drawBCross};
 	
 	//创建窗口
 	initgraph(WIDTH, HIGH);
